@@ -4,60 +4,61 @@ An intelligent AI-powered application that allows users to interact with YouTube
 
 ## 🚀 Overview
 
-This project leverages Retrieval-Augmented Generation (RAG) to transform YouTube video transcripts into a searchable knowledge base. By combining transcript extraction, text chunking, vector embeddings, and a large language model, the system delivers precise answers grounded in video content.
+This project leverages **Retrieval-Augmented Generation (RAG)** using the **LangChain framework** to transform YouTube video transcripts into a searchable knowledge base. It combines transcript extraction, intelligent chunking, vector embeddings, and LLM reasoning to deliver precise, context-aware answers.
 
 ## ✨ Features
 
 * 🔗 Extracts transcripts directly from YouTube videos
 * 🌍 Supports **multilingual videos** and processes content from any language
-* 🔄 Automatically adapts and provides **responses in English** for consistency
-* 🧠 Uses embeddings + vector search for accurate context retrieval
-* 💬 Interactive chat-based interface for seamless user experience
-* ⚡ Fast responses with caching and persistent vector database
-* 🎥 Embedded video player for better context understanding
+* 🔄 Generates **responses in English** for consistency
+* 🧠 Built using **LangChain for end-to-end pipeline orchestration**
+* 🔍 Semantic search using embeddings + vector database
+* 💬 Chat-based interface for interactive querying
+* ⚡ Optimized with caching and persistent vector storage
+* 🎥 Embedded video player for better understanding
 
 ## 🛠️ Tech Stack
 
-* **LangChain** – Pipeline orchestration
-* **Google Gemini API** – LLM + Embeddings
-* **ChromaDB** – Vector storage
+* **LangChain** – Core framework for RAG pipeline, chaining, and orchestration
+* **Google Gemini API** – LLM for response generation & embeddings
+* **ChromaDB** – Vector database for similarity search
 * **YouTube Transcript API** – Transcript extraction
-* **Streamlit** – Interactive UI
+* **Streamlit** – User interface
 
 ## 🧠 How It Works
 
-1. Extract video transcript using YouTube Transcript API
-2. Split transcript into smaller chunks
-3. Convert text into embeddings using Gemini
-4. Store embeddings in Chroma vector database
-5. Retrieve relevant chunks based on user query
-6. Generate accurate answers using LLM with context
+1. Extract transcript using YouTube Transcript API
+2. Process and split text using LangChain text splitters
+3. Generate embeddings using Gemini via LangChain
+4. Store embeddings in ChromaDB vector store
+5. Retrieve relevant chunks using similarity search
+6. Use LangChain prompt + LLM chain to generate final answer
 
 ## 🌐 Multilingual Capability
 
-The system is designed to work with videos in **any language**.
+The system is designed to handle **videos in any language**:
 
-* It retrieves transcripts regardless of the original language
-* Processes them through the pipeline
-* Generates responses **in English**, ensuring accessibility and consistency
+* Automatically retrieves available transcripts
+* Processes multilingual content
+* Produces **final answers in English** for better usability
 
 ## 📌 Use Cases
 
-* 📚 Learn concepts quickly from long lectures
-* 🎓 Summarize educational videos
-* 💻 Understand coding tutorials faster
-* 🧾 Extract key insights from any content
+* 📚 Learn faster from long lectures
+* 🎓 Understand complex topics quickly
+* 💻 Simplify coding tutorials
+* 🧾 Extract insights from any video content
 
 ## 🔮 Future Scope
 
-* 🌍 Support answers in **multiple output languages** (not just English)
-* 🕒 Add **timestamp-based navigation** (jump to exact video moment)
-* 💬 Maintain **chat history across sessions**
-* 📚 Multi-video knowledge base (query across multiple videos)
-* 🧠 Improved semantic search and ranking
-* 🌐 Deploy as a scalable web application (FastAPI + React)
-* 📱 Mobile-friendly or app-based interface
+* 🌍 Multi-language output support (beyond English)
+* 🕒 Timestamp-based navigation (jump to exact moment in video)
+* 💬 Persistent chat history across sessions
+* 📚 Multi-video querying (knowledge base across videos)
+* 🧠 Advanced retrieval optimization (hybrid search, reranking)
+* 🌐 Full-stack deployment (FastAPI + React)
+* 📱 Mobile-friendly interface
 
 ## 🏁 Conclusion
 
-This project simplifies the way users consume video content by turning passive watching into an interactive learning experience. It demonstrates the power of combining LLMs with retrieval systems to build practical, real-world AI applications.
+This project demonstrates how **LangChain can be effectively used to build real-world RAG applications**, transforming unstructured video data into an interactive and intelligent learning experience.
