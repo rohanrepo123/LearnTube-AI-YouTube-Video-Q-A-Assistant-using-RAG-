@@ -2,15 +2,20 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from langchain_text_splitters import RecursiveCharacterTextSplitter, Language
 from langchain_text_splitters import TextSplitter,CharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings,GoogleGenerativeAI
+from langchain_openai import ChatOpenAI,OpenAI,OpenAIEmbeddings
 from langchain_chroma import Chroma
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 import re
 from dotenv import load_dotenv
 load_dotenv()
-model = GoogleGenerativeAI(model='gemini-2.5-flash')
-embeddings = GoogleGenerativeAIEmbeddings(
-    model="models/gemini-embedding-001"
+# model = GoogleGenerativeAI(model='gemini-2.5-flash')
+model = OpenAI(model='gpt-4o-mini')
+# embeddings = GoogleGenerativeAIEmbeddings(
+#     model="models/gemini-embedding-001"
+#     )
+embeddings = OpenAIEmbeddings(
+    model="text-embedding-3-small"
     )
 template = PromptTemplate(template="You have the right explaination to the user for the question.\n" \
 "{query} from the given context .\n {context} these are the lists of the information from out transcript, if the there is insufficient knowledge from the context simply tell him the info you are talking about not talked in the video"  
