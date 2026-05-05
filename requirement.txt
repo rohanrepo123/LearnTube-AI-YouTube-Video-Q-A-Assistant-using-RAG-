@@ -1,0 +1,37 @@
+# Core
+
+langchain
+langchain-core
+langchain-community
+
+# OpenAI + embeddings
+
+langchain-openai
+openai
+
+# Google (optional - only if you use it)
+
+langchain-google-genai
+
+# Vector DB
+
+langchain-chroma
+chromadb
+
+# YouTube transcript
+
+youtube-transcript-api
+
+# Tokenizer
+
+tiktoken
+
+# App
+
+streamlit
+
+# Utils
+
+python-dotenv
+requests
+regex
