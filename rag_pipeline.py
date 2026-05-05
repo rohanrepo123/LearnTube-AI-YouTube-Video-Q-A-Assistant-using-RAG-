@@ -18,7 +18,7 @@ embeddings = OpenAIEmbeddings(
     model="text-embedding-3-small"
     )
 template = PromptTemplate(template="You have the right explaination to the user for the question.\n" \
-"{query} from the given context .\n {context} these are the lists of the information from out transcript, if the there is insufficient knowledge from the context simply tell him the info you are talking about not talked in the video"  
+"{query}\n from the given context .\n {context}\n these are the lists of the information from out transcript, if the there is insufficient knowledge from the context simply tell him the info you are talking about not talked in the video"  
  , input_variables=['query','context'])
 
 def extract_link(url):
@@ -31,22 +31,22 @@ parser = StrOutputParser()
 def youtube_transcript(id):
     api = YouTubeTranscriptApi()
     try:
-        # Get all transcripts
-        transcript_list = api.list(video_id='fHF22Wxuyw4')
+        transcript_list = api.list(video_id=id)
 
-        # Try English manually created
+        # Try strict English
         try:
             transcript = transcript_list.find_manually_created_transcript(['en'])
         except:
-            # Try auto English
             try:
                 transcript = transcript_list.find_generated_transcript(['en'])
             except:
-                # Fallback: ANY language
-                transcript = list(transcript_list)[0]
+                # Force English translation if not available
+                transcript = transcript_list.find_transcript(['en'])
+                transcript = transcript.translate('en')
 
         data = " ".join(x.text for x in transcript.fetch())
         return data
+
     except Exception as e:
         return f"No transcript available: {str(e)}"
     
@@ -56,8 +56,8 @@ def chunking(text):
 
 def storing_embedding(x,id):
     vector_store = Chroma(
-    embedding_function=GoogleGenerativeAIEmbeddings(model='models/gemini-embedding-001'),
-    persist_directory='my_chroma_youtube_rattlesnake'+id,
+    embedding_function= OpenAIEmbeddings(model='text-embedding-3-small'),
+    persist_directory='my_chroma_youtube_content'+id,
     collection_name='transcript1'
     )
     vector_store.add_texts(x)
